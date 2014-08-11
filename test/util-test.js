@@ -164,7 +164,7 @@ describe("Utils tests", function(){
 
     it("should find all assets in multiple paths", function(done) {
       this.utils.getListOfAllFiles(["test/app3", "test/app1"])(function(err, files) {
-        expect(files).to.have.length(59);
+        expect(files).to.have.length(62);
         done();
       });
     });
@@ -182,7 +182,7 @@ describe("Utils tests", function(){
 
     it("should find folders with assembly.json files with more than one source path", function(done) {
       this.utils.getListOfFoldersWithAssemblyFiles(["test/app3", "test/app1"])(function(err, files) {
-        expect(files).to.have.length(13);
+        expect(files).to.have.length(15);
         done();
       });
     });
@@ -306,7 +306,7 @@ describe("Utils tests", function(){
       var js = this.utils.convertHTMLtoJS(html);
 
       assert.equal(typeof(js), "string");
-      assert.equal(this.appendSnippetCode("\nvar snippetsRaw = \"MyText\\n\";"), js);
+      assert.equal(this.appendSnippetCode("var snippetsRaw = \"MyText\\n\";"), js);
     });
 
     it("convert body with tags", function(){
@@ -314,7 +314,7 @@ describe("Utils tests", function(){
       var js = this.utils.convertHTMLtoJS(html);
 
       assert.equal(typeof(js), "string");
-      assert.equal(this.appendSnippetCode("\nvar snippetsRaw = \"<a href='hello'>MyText</a>\\n\";"), js);
+      assert.equal(this.appendSnippetCode("var snippetsRaw = \"<a href='hello'>MyText</a>\\n\";"), js);
     });
 
     it("convert body with tags and double quotes", function(){
@@ -322,7 +322,7 @@ describe("Utils tests", function(){
       var js = this.utils.convertHTMLtoJS(html);
 
       assert.equal(typeof(js), "string");
-      assert.equal(this.appendSnippetCode("\nvar snippetsRaw = \"<a href=\\\"hello\\\">MyText</a>\\n\";"), js);
+      assert.equal(this.appendSnippetCode("var snippetsRaw = \"<a href=\\\"hello\\\">MyText</a>\\n\";"), js);
     });
 
     it("convert multiline body", function(){
@@ -330,7 +330,7 @@ describe("Utils tests", function(){
       var js = this.utils.convertHTMLtoJS(html);
 
       assert.equal(typeof(js), "string");
-      assert.equal(this.appendSnippetCode("\nvar snippetsRaw = \"MyText\\n\"+\n\"NewLine\\n\";"), js);
+      assert.equal(this.appendSnippetCode("var snippetsRaw = \"MyText\\n\"+\n\"NewLine\\n\";"), js);
     });
 
     it("convert html with exclude lines", function(){
@@ -338,7 +338,7 @@ describe("Utils tests", function(){
       var js = this.utils.convertHTMLtoJS(html);
 
       assert.equal(typeof(js), "string");
-      assert.equal(this.appendSnippetCode("\nvar snippetsRaw = \"MyText\\n\"+\n\"LastLine\\n\";"), js);
+      assert.equal(this.appendSnippetCode("var snippetsRaw = \"MyText\\n\"+\n\"LastLine\\n\";"), js);
     });
 
     it("convert html with multiline exclude comments", function(){
@@ -346,7 +346,7 @@ describe("Utils tests", function(){
       var js = this.utils.convertHTMLtoJS(html);
 
       assert.equal(typeof(js), "string");
-      assert.equal(this.appendSnippetCode("\nvar snippetsRaw = \"MyText\\n\"+\n\"LastLine\\n\";"), js);
+      assert.equal(this.appendSnippetCode("var snippetsRaw = \"MyText\\n\"+\n\"LastLine\\n\";"), js);
     });
   });
 });
