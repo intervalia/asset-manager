@@ -244,7 +244,7 @@ of the filenames in the `locales` folder is also `MyItem`.
 MyItem
 │
 ├── assembly.json
-├── template
+├── templates
 │   │
 │   └── myFile.html
 │
