@@ -1,0 +1,11 @@
+{
+  "files": [
+    "*.js"
+  ],
+  "assemblies": [
+    "glob1",
+    "glob2",
+    "glob3"
+  ],
+  "simpleWrap": true
+}

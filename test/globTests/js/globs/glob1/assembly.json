@@ -1,0 +1,10 @@
+{
+  "files": [
+    "**/*.js",
+    "!**/level2b*.*"
+  ],
+  "onefiles": [
+    "**/*.js"
+  ],
+  "simpleWrap": true
+}

@@ -206,4 +206,17 @@ describe("contentResolver tests", function(){
       assert.equal(content, shouldBe);
     });
   });
+
+  describe("Test globby functionality", function() {
+    beforeEach(function() {
+      this.cf = this.cr(['test/globTests'], null, false);
+    });
+
+    it("for globs", function() {
+      var js = this.cf("", "globs", "js", "js");
+      var content = js.getContent();//.replace(/\n/g, "|");
+      var shouldBe = "";
+      assert.equal(content, shouldBe);
+    });
+  });
 });
