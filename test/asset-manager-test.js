@@ -56,20 +56,20 @@ describe("Asset Manager", function() {
 
 
       it("check js resolution", function(){
-        assert.equal("<script src='/js/app3.js'></script>", this.context.js("app3.js"));
-        assert.equal("<script src='/js/app3.js'></script>", this.context.js("/app3.js"));
+        assert.equal("<script src='/js/app3.js' ></script>", this.context.js("app3.js"));
+        assert.equal("<script src='/js/app3.js' ></script>", this.context.js("/app3.js"));
       });
 
       it("check css resolution", function(){
-        assert.equal("<link href='/css/app3.css' rel='stylesheet' media='screen'>", this.context.css("app3.css"));
-        assert.equal("<link href='/css/app3.css' rel='stylesheet' media='print'>", this.context.css({print : 'app3.css'}));
-        assert.equal("<link href='/css/fullModuleWithCSS.css' rel='stylesheet' media='screen'>", this.context.css('fullModuleWithCSS.css'));
-        assert.equal("<link href='mynonexistentfile.css' rel='stylesheet' media='screen'>", this.context.css("mynonexistentfile.css"));
+        assert.equal("<link href='/css/app3.css' rel='stylesheet' media='screen'/>", this.context.css("app3.css"));
+        assert.equal("<link href='/css/app3.css' rel='stylesheet' media='print'/>", this.context.css({print : 'app3.css'}));
+        assert.equal("<link href='/css/fullModuleWithCSS.css' rel='stylesheet' media='screen'/>", this.context.css('fullModuleWithCSS.css'));
+        assert.equal("<link href='mynonexistentfile.css' rel='stylesheet' media='screen'/>", this.context.css("mynonexistentfile.css"));
       });
 
       it("check less resolution", function(){
-        assert.equal("<link href='/css/lessTest.less.css' rel='stylesheet' media='screen'>", this.context.css("lessTest.less"));
-        assert.equal("<link href='/css/lessTest.less.css' rel='stylesheet' media='print'>", this.context.css({print : 'lessTest.less'}));
+        assert.equal("<link href='/css/lessTest.less.css' rel='stylesheet' media='screen'/>", this.context.css("lessTest.less"));
+        assert.equal("<link href='/css/lessTest.less.css' rel='stylesheet' media='print'/>", this.context.css({print : 'lessTest.less'}));
       });
 
       it("check img resolution", function(){
@@ -82,7 +82,7 @@ describe("Asset Manager", function() {
       });
 
       it("should resolve css found in module folders", function() {
-        expect(this.context.css("/other.css")).to.equal("<link href='/css/other.css' rel='stylesheet' media='screen'>");
+        expect(this.context.css("/other.css")).to.equal("<link href='/css/other.css' rel='stylesheet' media='screen'/>");
       });
 
       it("check html resolution", function(){
@@ -97,30 +97,30 @@ describe("Asset Manager", function() {
       });
 
       it("absolute paths", function() {
-        assert.equal("<script src='http://path.com/me.js'></script>", this.context.js("http://path.com/me.js"));
-        assert.equal("<link href='http://path.com/me.css' rel='stylesheet' media='screen'>", this.context.css("http://path.com/me.css"));
+        assert.equal("<script src='http://path.com/me.js' ></script>", this.context.js("http://path.com/me.js"));
+        assert.equal("<link href='http://path.com/me.css' rel='stylesheet' media='screen'/>", this.context.css("http://path.com/me.css"));
         assert.equal("http://path.com/me.png", this.context.img("http://path.com/me.png"));
         assert.equal("http://path.com/me.html", this.context.img("http://path.com/me.html"));
 
-        assert.equal("<script src='https://path.com/me.js'></script>", this.context.js("https://path.com/me.js"));
-        assert.equal("<link href='https://path.com/me.css' rel='stylesheet' media='screen'>", this.context.css("https://path.com/me.css"));
+        assert.equal("<script src='https://path.com/me.js' ></script>", this.context.js("https://path.com/me.js"));
+        assert.equal("<link href='https://path.com/me.css' rel='stylesheet' media='screen'/>", this.context.css("https://path.com/me.css"));
         assert.equal("https://path.com/me.png", this.context.img("https://path.com/me.png"));
         assert.equal("https://path.com/me.html", this.context.img("https://path.com/me.html"));
 
-        assert.equal("<script src='http://path.com/me.js?query#hash'></script>", this.context.js("http://path.com/me.js?query#hash"));
-        assert.equal("<link href='http://path.com/me.css?query#hash' rel='stylesheet' media='screen'>", this.context.css("http://path.com/me.css?query#hash"));
+        assert.equal("<script src='http://path.com/me.js?query#hash' ></script>", this.context.js("http://path.com/me.js?query#hash"));
+        assert.equal("<link href='http://path.com/me.css?query#hash' rel='stylesheet' media='screen'/>", this.context.css("http://path.com/me.css?query#hash"));
         assert.equal("http://path.com/me.png?query#hash", this.context.img("http://path.com/me.png?query#hash"));
         assert.equal("http://path.com/me.html?query#hash", this.context.img("http://path.com/me.html?query#hash"));
       });
 
       it("unresolved relative paths", function() {
-        assert.equal("<script src='unresolvedPath.js'></script>", this.context.js("unresolvedPath.js"));
-        assert.equal("<link href='unresolvedPath.css' rel='stylesheet' media='screen'>", this.context.css("unresolvedPath.css"));
+        assert.equal("<script src='unresolvedPath.js' ></script>", this.context.js("unresolvedPath.js"));
+        assert.equal("<link href='unresolvedPath.css' rel='stylesheet' media='screen'/>", this.context.css("unresolvedPath.css"));
         assert.equal("unresolvedPath.png", this.context.img("unresolvedPath.png"));
         assert.equal("unresolvedPath.html", this.context.img("unresolvedPath.html"));
 
-        assert.equal("<script src='unresolvedPath.js?query#hash'></script>", this.context.js("unresolvedPath.js?query#hash"));
-        assert.equal("<link href='unresolvedPath.css?query#hash' rel='stylesheet' media='screen'>", this.context.css("unresolvedPath.css?query#hash"));
+        assert.equal("<script src='unresolvedPath.js?query#hash' ></script>", this.context.js("unresolvedPath.js?query#hash"));
+        assert.equal("<link href='unresolvedPath.css?query#hash' rel='stylesheet' media='screen'/>", this.context.css("unresolvedPath.css?query#hash"));
         assert.equal("unresolvedPath.png?query#hash", this.context.img("unresolvedPath.png?query#hash"));
         assert.equal("unresolvedPath.html?query#hash", this.context.img("unresolvedPath.html?query#hash"));
       });
@@ -161,8 +161,8 @@ describe("Asset Manager", function() {
       });
 
       it("check css resolution", function(){
-        assert.equal("<link href='/css/module.css' rel='stylesheet' media='screen'>", this.context.css("module.css"));
-        assert.notEqual("<link href='/css/noModule.css' rel='stylesheet' media='print'>", this.context.css('noModule.css'));
+        assert.equal("<link href='/css/module.css' rel='stylesheet' media='screen'/>", this.context.css("module.css"));
+        assert.notEqual("<link href='/css/noModule.css' rel='stylesheet' media='print'/>", this.context.css('noModule.css'));
       });
     });
 
@@ -186,17 +186,17 @@ describe("Asset Manager", function() {
       });
 
       it("check js resolution", function(){
-        assert.equal("<script src='/js/app3-cb248e942f61a08ff6f783b491bcfa4e.js'></script>", this.context.js("app3.js"));
+        assert.equal("<script src='/js/app3-cb248e942f61a08ff6f783b491bcfa4e.js' ></script>", this.context.js("app3.js"));
       });
 
       it("check css resolution", function(){
-        assert.equal("<link href='/css/app3-fcdce6b6d6e2175f6406869882f6f1ce.css' rel='stylesheet' media='screen'>", this.context.css("app3.css"));
-        assert.equal("<link href='/css/fullModuleWithCSS-fcdce6b6d6e2175f6406869882f6f1ce.css' rel='stylesheet' media='screen'>", this.context.css('fullModuleWithCSS.css'));
-        assert.equal("<link href='/css/app3-fcdce6b6d6e2175f6406869882f6f1ce.css' rel='stylesheet' media='print'>", this.context.css({print : 'app3.css'}));
+        assert.equal("<link href='/css/app3-fcdce6b6d6e2175f6406869882f6f1ce.css' rel='stylesheet' media='screen'/>", this.context.css("app3.css"));
+        assert.equal("<link href='/css/fullModuleWithCSS-fcdce6b6d6e2175f6406869882f6f1ce.css' rel='stylesheet' media='screen'/>", this.context.css('fullModuleWithCSS.css'));
+        assert.equal("<link href='/css/app3-fcdce6b6d6e2175f6406869882f6f1ce.css' rel='stylesheet' media='print'/>", this.context.css({print : 'app3.css'}));
       });
 
       it("check less resolution", function(){
-        assert.equal("<link href='/css/lessTest-498fb2b7cb4ec5d370c7fe0b9fd7e27b.less.css' rel='stylesheet' media='screen'>", this.context.css("lessTest.less"));
+        assert.equal("<link href='/css/lessTest-498fb2b7cb4ec5d370c7fe0b9fd7e27b.less.css' rel='stylesheet' media='screen'/>", this.context.css("lessTest.less"));
       });
 
       it("check img resolution", function(){
@@ -208,11 +208,11 @@ describe("Asset Manager", function() {
       });
 
       it("css should resolve in module folder", function(){
-        expect(this.context.css("other.css")).to.equal("<link href='/css/other-fcdce6b6d6e2175f6406869882f6f1ce.css' rel='stylesheet' media='screen'>");
+        expect(this.context.css("other.css")).to.equal("<link href='/css/other-fcdce6b6d6e2175f6406869882f6f1ce.css' rel='stylesheet' media='screen'/>");
       });
 
       it("check Angular resolution", function(){
-        expect(this.context.js("angular/MyApp.js")).to.equal("<script src='/js/angular/MyApp-0706901f2d108d3eb07f6b92a1f1e7f6.js'></script>");
+        expect(this.context.js("angular/MyApp.js")).to.equal("<script src='/js/angular/MyApp-0706901f2d108d3eb07f6b92a1f1e7f6.js' ></script>");
         expect(this.context.html("template1.html")).to.equal("/html/template1-932e5a2fd42307d0daab17b456817ea0.html");
         expect(this.context.html("template2.html")).to.equal("/html/template2-8721335f90ef32d088028509bb92e344.html");
       });
@@ -224,30 +224,30 @@ describe("Asset Manager", function() {
       });
 
       it("absolute paths", function() {
-        assert.equal("<script src='http://path.com/me.js'></script>", this.context.js("http://path.com/me.js"));
-        assert.equal("<link href='http://path.com/me.css' rel='stylesheet' media='screen'>", this.context.css("http://path.com/me.css"));
+        assert.equal("<script src='http://path.com/me.js' ></script>", this.context.js("http://path.com/me.js"));
+        assert.equal("<link href='http://path.com/me.css' rel='stylesheet' media='screen'/>", this.context.css("http://path.com/me.css"));
         assert.equal("http://path.com/me.png", this.context.img("http://path.com/me.png"));
         assert.equal("http://path.com/me.html", this.context.img("http://path.com/me.html"));
 
-        assert.equal("<script src='https://path.com/me.js'></script>", this.context.js("https://path.com/me.js"));
-        assert.equal("<link href='https://path.com/me.css' rel='stylesheet' media='screen'>", this.context.css("https://path.com/me.css"));
+        assert.equal("<script src='https://path.com/me.js' ></script>", this.context.js("https://path.com/me.js"));
+        assert.equal("<link href='https://path.com/me.css' rel='stylesheet' media='screen'/>", this.context.css("https://path.com/me.css"));
         assert.equal("https://path.com/me.png", this.context.img("https://path.com/me.png"));
         assert.equal("https://path.com/me.html", this.context.img("https://path.com/me.html"));
 
-        assert.equal("<script src='http://path.com/me.js?query#hash'></script>", this.context.js("http://path.com/me.js?query#hash"));
-        assert.equal("<link href='http://path.com/me.css?query#hash' rel='stylesheet' media='screen'>", this.context.css("http://path.com/me.css?query#hash"));
+        assert.equal("<script src='http://path.com/me.js?query#hash' ></script>", this.context.js("http://path.com/me.js?query#hash"));
+        assert.equal("<link href='http://path.com/me.css?query#hash' rel='stylesheet' media='screen'/>", this.context.css("http://path.com/me.css?query#hash"));
         assert.equal("http://path.com/me.png?query#hash", this.context.img("http://path.com/me.png?query#hash"));
         assert.equal("http://path.com/me.html?query#hash", this.context.img("http://path.com/me.html?query#hash"));
       });
 
       it("unresolved relative paths", function() {
-        assert.equal("<script src='unresolvedPath.js'></script>", this.context.js("unresolvedPath.js"));
-        assert.equal("<link href='unresolvedPath.css' rel='stylesheet' media='screen'>", this.context.css("unresolvedPath.css"));
+        assert.equal("<script src='unresolvedPath.js' ></script>", this.context.js("unresolvedPath.js"));
+        assert.equal("<link href='unresolvedPath.css' rel='stylesheet' media='screen'/>", this.context.css("unresolvedPath.css"));
         assert.equal("unresolvedPath.png", this.context.img("unresolvedPath.png"));
         assert.equal("unresolvedPath.html", this.context.img("unresolvedPath.html"));
 
-        assert.equal("<script src='unresolvedPath.js?query#hash'></script>", this.context.js("unresolvedPath.js?query#hash"));
-        assert.equal("<link href='unresolvedPath.css?query#hash' rel='stylesheet' media='screen'>", this.context.css("unresolvedPath.css?query#hash"));
+        assert.equal("<script src='unresolvedPath.js?query#hash' ></script>", this.context.js("unresolvedPath.js?query#hash"));
+        assert.equal("<link href='unresolvedPath.css?query#hash' rel='stylesheet' media='screen'/>", this.context.css("unresolvedPath.css?query#hash"));
         assert.equal("unresolvedPath.png?query#hash", this.context.img("unresolvedPath.png?query#hash"));
         assert.equal("unresolvedPath.html?query#hash", this.context.img("unresolvedPath.html?query#hash"));
       });
@@ -291,10 +291,10 @@ describe("Asset Manager", function() {
 
         assert.equal("app3.js", manifest['app3.js']["requested"]);
         assert.equal("js", manifest['app3.js']["type"]);
-        assert.equal("<script src='CDNPath/js/app3-cb248e942f61a08ff6f783b491bcfa4e.js'></script>", manifest['app3.js']["output"]);
+        assert.equal("<script src='CDNPath/js/app3-cb248e942f61a08ff6f783b491bcfa4e.js' ></script>", manifest['app3.js']["output"]);
         assert.equal("js/app3-cb248e942f61a08ff6f783b491bcfa4e.js", manifest['app3.js']["relativePath"]);
         assert.equal("cb248e942f61a08ff6f783b491bcfa4e", manifest['app3.js']["fingerprint"]);
-        assert.equal("<script src='CDNPath/js/app3-cb248e942f61a08ff6f783b491bcfa4e_raw.js'></script>", manifest['app3.js']["outputRaw"]);
+        assert.equal("<script src='CDNPath/js/app3-cb248e942f61a08ff6f783b491bcfa4e_raw.js' ></script>", manifest['app3.js']["outputRaw"]);
 
         var cManifest = fs.readFileSync(path.join(tmpDir, "js", "clientManifest.js"), 'utf8');
         var context = {};
