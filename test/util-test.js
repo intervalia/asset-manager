@@ -318,11 +318,11 @@ describe("Utils tests", function(){
     });
 
     it("convert body with tags and double quotes", function(){
-      var html = "<html><body><a href=\"hello\">MyText</a></body></html>";
+      var html = '<html><body><a href="hello">MyText</a></body></html>';
       var js = this.utils.convertHTMLtoJS(html);
 
       assert.equal(typeof(js), "string");
-      assert.equal(this.appendSnippetCode("var snippetsRaw = \"<a href=\\\"hello\\\">MyText</a>\\n\";"), js);
+      assert.equal(this.appendSnippetCode('var snippetsRaw = "<a href=\\"hello\\">MyText</a>\\n";'), js);
     });
 
     it("convert multiline body", function(){
